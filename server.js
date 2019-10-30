@@ -26,9 +26,7 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/timestamp/:date_string", (req, res) =>{
   let date;
   let date_string = req.params.date_string;
-  if(date_string == ""){
-    date = new Date();}
-  else if(date_string.match(/^\d+$/)){
+  if(date_string.match(/^\d+$/)){
     date = new Date(Number.parseInt(date_string))}
   else if(date_string.match(/^\d\d\d\d-\d\d-\d\d$/)){
     try { date = new Date()}
@@ -38,6 +36,11 @@ app.get("/api/timestamp/:date_string", (req, res) =>{
   }
   if (date){res.json({"unix": date.getTime(), "utc" : date.toUTCString() })}
   else {res.json({"unix": null, "utc" : "Invalid Date" })}
+  
+})
+app.get("/api/timestamp/", (req, res) =>{
+    let date = new Date();
+  res.json({"unix": date.getTime(), "utc" : date.toUTCString() })
   
 })
 
