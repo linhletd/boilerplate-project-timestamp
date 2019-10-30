@@ -40,7 +40,7 @@ app.get("/api/timestamp/:date_string", (req, res) =>{
 })
 app.get("/api/timestamp/", (req, res) =>{
     let date = new Date();
-  res.json({"unix": date.getTime(), "utc" : date.toUTCString() })
+  res.json({"unix": date.getTime()/1000, "utc" : date.toUTCString() })
   
 })
 
