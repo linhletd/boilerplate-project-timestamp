@@ -31,11 +31,11 @@ app.get("/api/timestamp/:date_string", (req, res) =>{
   else if(date_string.match(/^\d\d\d\d-\d\d-\d\d$/)){
     try { date = new Date(date_string)}
     catch(err){
-      res.json({"unix": null, "utc" : "Invalid Date" })
+      date = null;
     }
   }
   if (date){res.json({"unix": date.getTime(), "utc" : date.toUTCString() })}
-  else {res.json({"unix": null, "utc" : "Invalid Date" })}
+  else {res.json({"err" : "Invalid Date" })}
   
 })
 app.get("/api/timestamp/", (req, res) =>{
