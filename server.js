@@ -23,7 +23,23 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
-
+app.get("/api/timestamp/:date_string", (req, res) =>{
+  let date;
+  let date_string = req.params.date_string;
+  if(date_string == ""){
+    date = new Date();}
+  else if(date_string.match(/^\d+$/)){
+    date = new Date(Math.Number(date_string))}
+  else if(date_string.match(/^\d\d\d\d-\d\d-\d\d$/)){
+    try { date = new Date()}
+    catch(err){
+      res.json({"unix": null, "utc" : "Invalid Date" })
+    }
+  }
+  if (date){res.json({"unix": date.getTime(), "utc" : date.toUTCString() })}
+  else {res.json({"unix": null, "utc" : "Invalid Date" })}
+  
+})
 
 
 // listen for requests :)
