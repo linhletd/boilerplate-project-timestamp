@@ -38,11 +38,11 @@ app.get("/api/timestamp/:date_string", (req, res) =>{
   else {res.json({"unix": null, "utc" : "Invalid Date" })}
   
 })
-app.get("/api/timestamp/", (req, res) =>{
-    let date = new Date();
-  res.json({"unix": date.getTime(), "utc" : date.toUTCString() })
+// app.get("/api/timestamp/", (req, res) =>{
+//     let date = new Date();
+//   res.json({"unix": date.getTime(), "utc" : date.toUTCString() })
   
-})
+// })
 
 
 // listen for requests :)
