@@ -29,7 +29,7 @@ app.get("/api/timestamp/:date_string", (req, res) =>{
   if(date_string == ""){
     date = new Date();}
   else if(date_string.match(/^\d+$/)){
-    date = new Date(Math.Number(date_string))}
+    date = new Date(Number.parseInt(date_string))}
   else if(date_string.match(/^\d\d\d\d-\d\d-\d\d$/)){
     try { date = new Date()}
     catch(err){
